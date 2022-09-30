@@ -11,7 +11,7 @@
 #      OPTIONS: ---
 # REQUIREMENTS: ---
 #         BUGS: --- 
-#        NOTES: 1) Add options
+#        NOTES: ---
 #       AUTHOR: Alexey Grunskii (MegaVerkruzo), robochat@mail.ru
 # ORGANIZATION: 
 #      VERSION: 1.0
@@ -20,39 +20,38 @@
 #===============================================================================
 
 use strict;
+use warnings;
 use utf8;
+
+my $ARGVSize=@ARGV;
+
+unless (1 <= $ARGVSize && $ARGVSize <= 3) {
+	die("Must be at least 1 parameter and less 3 parameters");
+}
+
+# for (my $i=0; $i<$ARGVSize; $i++) {
+# 	unless ($ARGV[$i]=~/[-+]?\d+(.\d+)?/) {
+# 		die("Must be number, but met \"$ARGV[$i]\"");
+# 	}
+# }
 
 my $left=1;
 my $right=0;
 my $step=1;
-my $ARGVSize=@ARGV;
-for(my $i=0; $i<$ARGVSize; $i++) {
-	if ($ARGV[$i]=~/[-+]?\d+(.\d+)?/) {
-		if ($i+3<$ARGVSize) {
-			die "extra operand \"$ARGV[$i+3]\"";
-		}
-		elsif ($ARGV[$i+1]=~/[-+]?\d+(.\d+)?/ && $ARGV[$i+2]=~/[-+]?\d+(.\d+)?/) {
-			$left=$ARGV[$i];
-			$right=$ARGV[$i+1];
-			$step=$ARGV[$i+2];
-		} 
-		elsif ($i+3==$ARGVSize) {
-			die "extra operand \"$ARGV[$i+2]\"";
-		}
-		elsif ($ARGV[$i+1]=~/[-+]?\d+(.\d+)?/) {
-			$left=$ARGV[$i];
-			$right=$ARGV[$i+1];
-		}
-		elsif ($i+2==$ARGVSize) {
-			die "extra operand \"$ARGV[$i+1]\"";
-		}
-		else {
-			$right=$ARGV[$i];
-		}
-		last;
-	}
-	# Here i need to write options if's
+
+if ($ARGVSize==1) {
+	$right=$ARGV[0];
 }
-for (my $i=$left; $left<=$right ? $i<=$right : $right<=$i; $i+=$step) {
-	print "$i\n";
+elsif ($ARGVSize==2) {
+	$left=$ARGV[0];
+	$right=$ARGV[1];
+}
+elsif ($ARGVSize==3) {
+	$left=$ARGV[0];
+	$right=$ARGV[1];
+	$step=$ARGV[2];
+}
+
+for (my $i=$left; $left<$right ? $i<=$right : $right<=$i; $i++) {
+	print("$i\n");
 }
