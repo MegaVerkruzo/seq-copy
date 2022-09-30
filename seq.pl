@@ -29,11 +29,11 @@ unless (1 <= $ARGVSize && $ARGVSize <= 3) {
 	die("Must be at least 1 parameter and less 3 parameters");
 }
 
-# for (my $i=0; $i<$ARGVSize; $i++) {
-# 	unless ($ARGV[$i]=~/[-+]?\d+(.\d+)?/) {
-# 		die("Must be number, but met \"$ARGV[$i]\"");
-# 	}
-# }
+for (my $i=0; $i<$ARGVSize; $i++) {
+	unless ($ARGV[$i]=~/[-+]?\d+(.\d+)?/) {
+		die("Must be number, but met \"$ARGV[$i]\"");
+	}
+}
 
 my $left=1;
 my $right=0;
@@ -52,6 +52,10 @@ elsif ($ARGVSize==3) {
 	$step=$ARGV[2];
 }
 
-for (my $i=$left; $left<$right ? $i<=$right : $right<=$i; $i++) {
+if ($step==0) {
+	die("Step mustn't be zero");
+}
+
+for (my $i=$left; $step>=1 ? $i<=$right : $right<=$i; $i+=$step) {
 	print("$i\n");
 }
