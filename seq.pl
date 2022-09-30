@@ -9,10 +9,8 @@
 #
 #      OPTIONS: ---
 # REQUIREMENTS: ---
-#         BUGS: Don't proccessing uncorrect queriers 
+#         BUGS: --- 
 #        NOTES: 1) Add options
-#        NOTES: 2) Add downto step
-#        NOTES: 3) Add --format
 #       AUTHOR: Alexey Grunskii (MegaVerkruzo), robochat@mail.ru
 # ORGANIZATION: 
 #      VERSION: 1.0
