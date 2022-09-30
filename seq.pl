@@ -6,6 +6,7 @@
 #        USAGE: ./seq.pl  
 #
 #  DESCRIPTION: realization of command seq
+#  DESCRIPTION: https://github.com/MegaVerkruzo/seq-copy
 #
 #      OPTIONS: ---
 # REQUIREMENTS: ---
