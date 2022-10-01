@@ -10,7 +10,7 @@
 #
 #      OPTIONS: ---
 # REQUIREMENTS: ---
-#         BUGS: --- 
+#         BUGS: ---
 #        NOTES: ---
 #       AUTHOR: Alexey Grunskii (MegaVerkruzo), robochat@mail.ru
 # ORGANIZATION: 
