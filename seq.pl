@@ -28,10 +28,9 @@ my $ARGVSize=@ARGV;
 die 'Must be at least 1 parameter' if ($ARGVSize<1);
 die 'Must be less 4 parameters' if ($ARGVSize<4);
 
-for (my $i=0; $i<$ARGVSize; $i++) {
-	unless ($ARGV[$i]=~/[-+]?\d+(.\d+)?/) {
-		die("Must be number, but met \"$ARGV[$i]\"");
-	}
+foreach $value (@ARGV) 
+{
+	die "Must be number, but met \"$value\"" if (!($value=~/[-+]?\d+(.\d+)?/));
 }
 
 my $first=$ARGVSize>=2 ? $ARGV[0] : 1;
@@ -42,6 +41,7 @@ my $step=$ARGVSize==3 ? $ARGV[1] : 1;
 
 die "Step mustn't be zero" if ($step == 0);
 
-for (my $i=$first; $step>0 ? $i<=$last : $last<=$i; $i+=$step) {
+for (my $i=$first; $step>0 ? $i<=$last : $last<=$i; $i+=$step) 
+{
 	print("$i\n");
 }
