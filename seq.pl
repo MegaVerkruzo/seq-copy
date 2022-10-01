@@ -25,9 +25,8 @@ use utf8;
 
 my $ARGVSize=@ARGV;
 
-unless (1 <= $ARGVSize && $ARGVSize <= 3) {
-	die("Must be at least 1 parameter and less 3 parameters");
-}
+die 'Must be at least 1 parameter' if ($ARGVSize<1);
+die 'Must be less 4 parameters' if ($ARGVSize<4);
 
 for (my $i=0; $i<$ARGVSize; $i++) {
 	unless ($ARGV[$i]=~/[-+]?\d+(.\d+)?/) {
@@ -35,27 +34,14 @@ for (my $i=0; $i<$ARGVSize; $i++) {
 	}
 }
 
-my $left=1;
-my $right=0;
-my $step=1;
+my $first=$ARGVSize>=2 ? $ARGV[0] : 1;
 
-if ($ARGVSize==1) {
-	$right=$ARGV[0];
-}
-elsif ($ARGVSize==2) {
-	$left=$ARGV[0];
-	$right=$ARGV[1];
-}
-elsif ($ARGVSize==3) {
-	$left=$ARGV[0];
-	$right=$ARGV[1];
-	$step=$ARGV[2];
-}
+my $last=$ARGV[$ARGVSize-1];
 
-if ($step==0) {
-	die("Step mustn't be zero");
-}
+my $step=$ARGVSize==3 ? $ARGV[1] : 1;
 
-for (my $i=$left; $step>=1 ? $i<=$right : $right<=$i; $i+=$step) {
+die "Step mustn't be zero" if ($step == 0);
+
+for (my $i=$first; $step>0 ? $i<=$last : $last<=$i; $i+=$step) {
 	print("$i\n");
 }
