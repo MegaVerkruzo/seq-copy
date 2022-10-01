@@ -26,9 +26,9 @@ use utf8;
 my $ARGVSize=@ARGV;
 
 die 'Must be at least 1 parameter' if ($ARGVSize<1);
-die 'Must be less 4 parameters' if ($ARGVSize<4);
+die 'Must be less 4 parameters' if ($ARGVSize>=4);
 
-foreach $value (@ARGV) 
+foreach my $value (@ARGV) 
 {
 	die "Must be number, but met \"$value\"" if (!($value=~/[-+]?\d+(.\d+)?/));
 }
