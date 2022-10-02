@@ -32,7 +32,7 @@ die 'Must be less 4 parameters' if ($ARGVSize>=4);
 
 foreach my $value (@ARGV) 
 {
-	die "Must be number but met \"$value\"" if (looks_like_number($value));
+	die "Must be number but met \"$value\"" if (!looks_like_number($value));
 }
 
 my $first=$ARGVSize>=2 ? $ARGV[0] : 1; # по-умолчанию первый элемент арифм. прогрессии = 1, но если на вход дадут, хотя бы 2 переменной, то $first будет указан в первом аргументе
