@@ -30,14 +30,14 @@ die 'Must be less 4 parameters' if ($ARGVSize>=4);
 
 foreach my $value (@ARGV) 
 {
-	die "Must be number, but met \"$value\"" if (!($value=~/[-+]?\d+(.\d+)?/));
+	die "Must be number but met \"$value\"" if (!($value=~/[-+]?\d+(.\d+)?/));
 }
 
-my $first=$ARGVSize>=2 ? $ARGV[0] : 1;
+my $first=$ARGVSize>=2 ? $ARGV[0] : 1; # по-умолчанию первый элемент арифм. прогрессии = 1, но если на вход дадут, хотя бы 2 переменной, то $first будет указан в первом аргументе
 
-my $last=$ARGV[$ARGVSize-1];
+my $last=$ARGV[$ARGVSize-1]; # последний элемент арифм. прогрессии - всегда присутствует в аргументах
 
-my $step=$ARGVSize==3 ? $ARGV[1] : 1;
+my $step=$ARGVSize==3 ? $ARGV[1] : 1; # по-умолчанию шаг = 1, и только если будут указаны 3 аргумента, то аргумент по-середине будет $step
 
 die "Step mustn't be zero" if ($step == 0);
 
